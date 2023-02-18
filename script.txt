@@ -1,0 +1,20 @@
+composer global require laravel/installer
+laravel new larapics
+cd larapics
+php artisan serve
+mysql -u root -p -e "CREATE DATABASE larapics"
+php artisan migrate:install
+
+
+php artisan make:model Image -m        
+php artisan migrate
+
+    $table->id();
+            $table->string('title')->nullable();
+            $table->string('slug')->nullable()->unique();
+            $table->string('file');
+            $table->string('dimension');
+            $table->unsignedInteger('views_count')->default(0);
+            $table->unsignedInteger('downloads_count')->default(0);
+            $table->boolean('is_published')->default(false);
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
