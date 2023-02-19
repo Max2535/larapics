@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Image;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -24,6 +25,15 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+
+        Route::bind('image',function($value){
+            if(is_numeric($value)){
+                return Image::where('id',$value)->firstOrFail();
+            }
+            Image::where('slug',$value)->published()->firstOrFail();
+        });
+
+
         $this->configureRateLimiting();
 
         $this->routes(function () {
