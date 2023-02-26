@@ -1,3 +1,3 @@
 
 Code-changes
-https://github.com/tutsprime/larapics/commit/43c30a427911d747265d3dc8807212ed78ea726d
+https://github.com/tutsprime/larapics/commit/318c16781f7c42f8374869e5f8eb5327c19bb2ec

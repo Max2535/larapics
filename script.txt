@@ -16,3 +16,6 @@ php artisan storage:link
 php artisan migrate:fresh --seed
 php artisan make:controller ImageController
 php artisan make:request ImageRequest
+php artisan make:component Icon
+php artisan make:component Ui/Button
+php artisan make:component Alert

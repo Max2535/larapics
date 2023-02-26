@@ -12,6 +12,10 @@ class Image extends Model
 
     protected $fillable = ['title', 'file', 'dimension', 'user_id','slug'];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     public static function makeDirectory()
     {
         $subFolder = date('Y/m/d');
@@ -39,11 +43,15 @@ class Image extends Model
 
     public function permalink()
     {
-        return $this->slug ? route('images.show', $this->slug) : '#';
+        return $this->id ? route('images.show', $this->id) : '#';
     }
 
     public function route($method,$key = 'id'){
         return route("images.{$method}",$this->$key);
+    }
+
+    public function uploadDate(){
+        return $this->created_at->diffForHumans();
     }
 
     public function getSlug()
